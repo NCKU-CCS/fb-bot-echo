@@ -13,5 +13,5 @@ class FBWebhook(View):
         if verification_code != verify_token:
             return HttpResponse(status=400)
 
-        return request.GET.get('hub.challenge', '')
+        return HttpResponse(request.GET.get('hub.challenge', ''))
 
