@@ -8,7 +8,7 @@ __pycache__/
 local_settings.py
 db.sqlite3
 media
-.secret_key.json
+.secrets.json
 
 
 ### macOS ###
