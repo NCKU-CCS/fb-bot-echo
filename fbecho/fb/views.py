@@ -14,10 +14,13 @@ class FBWebhook(View):
         post_msg_url = 'https://graph.facebook.com/v2.6/me/messages?access_token={token}'.format(token=settings.FB_TOKEN)
         for entry in msg_entries['entry']:
             for message in entry['messaging']:
-                res_msg = json.dumps({"recipient": message['recipient'],
+                if message.get('message', '') == '':
+                    continue
+                res_msg = json.dumps({"recipient": message['sender'],
                                       "message": {
                                           "text": message['message']['text']
                                       }})
+                print (res_msg)
                 req = requests.post(post_msg_url,
                                     headers={"Content-Type": "application/json"},
                                     data=res_msg)
