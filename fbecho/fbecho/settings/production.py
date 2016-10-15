@@ -28,3 +28,4 @@ def get_secret(setting, secrets=secrets):
         raise ImproperlyConfigured(error_msg)
 
 VERIFICATION_CODE = get_secret('verification_code')
+FB_TOKEN = get_secret('FB_TOKEN')
